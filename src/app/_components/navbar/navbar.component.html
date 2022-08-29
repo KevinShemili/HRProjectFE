@@ -1,5 +1,13 @@
-<nav class="navbar navbar-dark bg-dark" aria-label="navbar">
-  <div class="container">
-    <a class="navbar-brand" href="#">Human Resources</a>
+<nav class="navbar navbar-dark bg-dark" aria-label="First navbar example">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Human Resources Application</a>
+    <div class="dropdown" *ngIf="true" dropdown>
+      <a class="dropdown-toggle text-light" dropdownToggle>Welcome, user</a>
+      <div class="dropdown-menu mt-2" *dropdownMenu>
+        <a class="dropdown-item">Edit Profile</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item">Log Out</a>
+      </div>
+    </div>
   </div>
 </nav>
