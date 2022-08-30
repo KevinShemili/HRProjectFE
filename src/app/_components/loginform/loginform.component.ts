@@ -8,18 +8,14 @@ import { AccountService } from 'src/app/_services/account.service';
 })
 export class LoginformComponent implements OnInit {
   model: any = {};
-  loggedIn: boolean = false;
 
-  constructor(private accountService: AccountService) {}
+  constructor(public accountService: AccountService) {}
 
   ngOnInit(): void {}
 
   login() {
     this.accountService.login(this.model).subscribe({
-      next: (x) => {
-        console.log(x);
-        this.loggedIn = true;
-      },
+      next: () => {},
       error: (e) => {
         console.error(e);
       },

@@ -7,29 +7,11 @@ import { AccountService } from 'src/app/_services/account.service';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  loggedIn: boolean = false;
+  constructor(public accountService: AccountService) {}
 
-  constructor(private accountService: AccountService) {}
-
-  ngOnInit(): void {
-    this.getCurrentUser();
-  }
+  ngOnInit(): void {}
 
   logout() {
     this.accountService.logout();
-  }
-
-  getCurrentUser() {
-    this.accountService.currentUser$.subscribe({
-      next: (x) => {
-        this.loggedIn = !!x;
-      },
-      error: (e) => {
-        console.error(e);
-      },
-      complete: () => {
-        console.log();
-      },
-    });
   }
 }
