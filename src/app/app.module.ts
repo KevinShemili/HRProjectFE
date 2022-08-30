@@ -9,9 +9,11 @@ import { LoginformComponent } from './_components/loginform/loginform.component'
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { HomepageComponent } from './_components/homepage/homepage.component';
+import { RegisterformComponent } from './_components/registerform/registerform.component';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, LoginformComponent],
+  declarations: [AppComponent, NavbarComponent, LoginformComponent, HomepageComponent, RegisterformComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

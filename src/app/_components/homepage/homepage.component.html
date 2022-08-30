@@ -1,0 +1,14 @@
+<div class="containter mt-5">
+    <div *ngIf="!homeNaVService.toggledRegister">
+        <h1>Homepage container</h1>
+    </div>
+
+</div>
+
+<div *ngIf="homeNaVService.toggledRegister" class="container">
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <app-registerform></app-registerform>
+        </div>
+    </div>
+</div>
