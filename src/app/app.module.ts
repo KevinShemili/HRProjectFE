@@ -11,9 +11,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { HomepageComponent } from './_components/homepage/homepage.component';
 import { RegisterformComponent } from './_components/registerform/registerform.component';
+import { ChangePasswordComponent } from './_components/change-password/change-password.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, LoginformComponent, HomepageComponent, RegisterformComponent],
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+    LoginformComponent,
+    HomepageComponent,
+    RegisterformComponent,
+    ChangePasswordComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -21,6 +30,9 @@ import { RegisterformComponent } from './_components/registerform/registerform.c
     FormsModule,
     HttpClientModule,
     BsDropdownModule.forRoot(),
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right',
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

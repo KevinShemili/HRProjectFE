@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AccountService } from 'src/app/_services/account.service';
-import { NavbarHomepageService } from 'src/app/_services/navbar-homepage.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,18 +8,12 @@ import { NavbarHomepageService } from 'src/app/_services/navbar-homepage.service
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  constructor(
-    public accountService: AccountService,
-    private homeNaVService: NavbarHomepageService
-  ) {}
+  constructor(public accountService: AccountService, private router: Router) {}
 
   ngOnInit(): void {}
 
   logout() {
     this.accountService.logout();
-  }
-
-  registerToggled() {
-    this.homeNaVService.toggledRegister = true;
+    this.router.navigateByUrl('/login');
   }
 }

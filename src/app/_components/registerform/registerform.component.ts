@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavbarHomepageService } from 'src/app/_services/navbar-homepage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registerform',
@@ -9,7 +9,7 @@ import { NavbarHomepageService } from 'src/app/_services/navbar-homepage.service
 export class RegisterformComponent implements OnInit {
   model: any = {};
 
-  constructor(private homeNaVService: NavbarHomepageService) {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -18,6 +18,6 @@ export class RegisterformComponent implements OnInit {
   }
 
   cancel() {
-    this.homeNaVService.toggledRegister = !this.homeNaVService.toggledRegister;
+    this.router.navigateByUrl('/home');
   }
 }
