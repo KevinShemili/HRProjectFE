@@ -13,6 +13,7 @@ import { HomepageComponent } from './_components/homepage/homepage.component';
 import { RegisterformComponent } from './_components/registerform/registerform.component';
 import { ChangePasswordComponent } from './_components/change-password/change-password.component';
 import { ToastrModule } from 'ngx-toastr';
+import { NotFoundComponent } from './_components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ToastrModule } from 'ngx-toastr';
     HomepageComponent,
     RegisterformComponent,
     ChangePasswordComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

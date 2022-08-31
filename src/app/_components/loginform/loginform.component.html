@@ -1,4 +1,4 @@
-<div class="container" *ngIf="(accountService.currentUser$ | async) === null" dropdown>
+<div class="container" *ngIf="(accountService.currentUser$ | async) === null">
   <div class="login">
     <form #loginForm="ngForm" class="needs-validation" (ngSubmit)="login()" autocomplete="off">
       <div class="form-group was-validated">

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ChangePasswordComponent } from './_components/change-password/change-password.component';
 import { HomepageComponent } from './_components/homepage/homepage.component';
 import { LoginformComponent } from './_components/loginform/loginform.component';
+import { NotFoundComponent } from './_components/not-found/not-found.component';
 import { RegisterformComponent } from './_components/registerform/registerform.component';
 import { AuthenticationGuard } from './_guards/authentication.guard';
 
@@ -18,7 +19,7 @@ const routes: Routes = [
     ],
   },
   { path: 'login', component: LoginformComponent },
-  { path: '**', component: LoginformComponent, pathMatch: 'full' },
+  { path: '**', component: NotFoundComponent, pathMatch: 'full' },
 ];
 
 @NgModule({
