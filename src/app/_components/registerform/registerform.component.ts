@@ -14,7 +14,10 @@ export class RegisterformComponent implements OnInit {
   ngOnInit(): void {}
 
   register() {
-    console.log(this.model);
+    console.log(this.model.isAdminCheck);
+    console.log(this.model.isHRManagerCheck);
+    console.log(this.model.isHRSpecialistCheck);
+    console.log(this.model.isBoardMemberCheck);
   }
 
   cancel() {
