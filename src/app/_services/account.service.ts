@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, ReplaySubject } from 'rxjs';
-import { JsonPipe } from '@angular/common';
 import { TokenDTO } from '../_models/TokenDTO';
 
 @Injectable({
@@ -22,6 +21,10 @@ export class AccountService {
         this.currentUserSource.next(token);
       })
     );
+  }
+
+  register(model: any) {
+    return this.http.post(this.apiUrl + 'Account/register', model);
   }
 
   setCurrentUser(user: TokenDTO) {
