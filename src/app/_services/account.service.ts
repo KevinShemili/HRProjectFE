@@ -19,6 +19,8 @@ export class AccountService {
         const token = response;
         if (token) localStorage.setItem('token', JSON.stringify(token));
         this.currentUserSource.next(token);
+
+        console.log(JSON.parse(localStorage.getItem('token')).UserId);
       })
     );
   }
@@ -34,5 +36,9 @@ export class AccountService {
   logout() {
     localStorage.removeItem('token');
     this.currentUserSource.next(null);
+  }
+
+  changePassword(model: any) {
+    return this.http.patch(this.apiUrl + 'Account/changePassword', model);
   }
 }
