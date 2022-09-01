@@ -104,5 +104,8 @@
       }
     }
   },
-  "defaultProject": "HRProjectFE"
+  "defaultProject": "HRProjectFE",
+  "cli": {
+    "analytics": "72c53e45-c91c-4f18-b91f-3b6f3f1fd042"
+  }
 }
