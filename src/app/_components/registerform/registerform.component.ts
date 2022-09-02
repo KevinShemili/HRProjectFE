@@ -15,15 +15,6 @@ export class RegisterformComponent implements OnInit {
   isHRSpecialistCheck: boolean;
   isBoardMemberCheck: boolean;
 
-  /*
-   register() {
-    console.log(this.model.isAdminCheck);
-    console.log(this.model.isHRManagerCheck);
-    console.log(this.model.isHRSpecialistCheck);
-    console.log(this.model.isBoardMemberCheck);
-  }
-  */
-
   constructor(
     private accountService: AccountService,
     private router: Router,

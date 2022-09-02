@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChange } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { PasswordChangeDTO } from 'src/app/_models/password-change-dto';
 import { AccountService } from 'src/app/_services/account.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-change-password',
@@ -9,7 +11,8 @@ import { AccountService } from 'src/app/_services/account.service';
   styleUrls: ['./change-password.component.css'],
 })
 export class ChangePasswordComponent implements OnInit {
-  model: any = {};
+  model = {} as PasswordChangeDTO;
+  jwtHelper = new JwtHelperService();
 
   constructor(
     private accountService: AccountService,
@@ -20,6 +23,11 @@ export class ChangePasswordComponent implements OnInit {
   ngOnInit(): void {}
 
   changePassword() {
+    const decodedToken = this.jwtHelper.decodeToken(
+      localStorage.getItem('token')
+    );
+    this.model.userId = decodedToken.nameid[0]; // refers to array index 0 where guid is stored
+
     this.accountService.changePassword(this.model).subscribe({
       next: () => {
         this.toastr.success('Successfully changed password!');
