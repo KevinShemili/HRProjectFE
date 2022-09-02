@@ -5,6 +5,7 @@ import { HomepageComponent } from './_components/homepage/homepage.component';
 import { LoginformComponent } from './_components/loginform/loginform.component';
 import { NotFoundComponent } from './_components/not-found/not-found.component';
 import { RegisterformComponent } from './_components/registerform/registerform.component';
+import { AdminGuard } from './_guards/admin.guard';
 import { AuthenticationGuard } from './_guards/authentication.guard';
 
 const routes: Routes = [
@@ -13,7 +14,11 @@ const routes: Routes = [
     runGuardsAndResolvers: 'always',
     canActivate: [AuthenticationGuard],
     children: [
-      { path: 'register', component: RegisterformComponent },
+      {
+        path: 'register',
+        component: RegisterformComponent,
+        canActivate: [AdminGuard],
+      },
       { path: 'change-password', component: ChangePasswordComponent },
       { path: 'home', component: HomepageComponent },
     ],

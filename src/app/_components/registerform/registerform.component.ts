@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AccountService } from 'src/app/_services/account.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-registerform',
@@ -14,6 +15,7 @@ export class RegisterformComponent implements OnInit {
   isHRManagerCheck: boolean;
   isHRSpecialistCheck: boolean;
   isBoardMemberCheck: boolean;
+  jwtHelper = new JwtHelperService();
 
   constructor(
     private accountService: AccountService,

@@ -13,6 +13,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class ChangePasswordComponent implements OnInit {
   model = {} as PasswordChangeDTO;
   jwtHelper = new JwtHelperService();
+  isHidden: boolean;
 
   constructor(
     private accountService: AccountService,
@@ -22,11 +23,12 @@ export class ChangePasswordComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  private decodeToken() {
+    return this.jwtHelper.decodeToken(localStorage.getItem('token'));
+  }
+
   changePassword() {
-    const decodedToken = this.jwtHelper.decodeToken(
-      localStorage.getItem('token')
-    );
-    this.model.userId = decodedToken.nameid[0]; // refers to array index 0 where guid is stored
+    this.model.userId = this.decodeToken().nameid[0]; // refers to array index 0 where guid is stored
 
     this.accountService.changePassword(this.model).subscribe({
       next: () => {
