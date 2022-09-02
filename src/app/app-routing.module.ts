@@ -1,24 +1,27 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { Edukimm1Component } from './edukimm1/edukimm1.component';
-
 
 const routes: Routes = [
-{
-  path:'Profiliim',
-component:Edukimm1Component
-
-},
-{
-  path:'edukimm1',
-  component:Edukimm1Component
-}
+  {
+    path: '',
 
 
+    //component:LoginformComponent,
+    runGuardsAndResolvers: 'always',
+    canActivate: [AuthenticationGuard],
+    children: [
+      { path: 'register', component: RegisterformComponent },
+      { path: 'change-password', component: ChangePasswordComponent },
+      { path: 'home', component: HomepageComponent },
+    ],
+  },
+  { path: 'login', component: LoginformComponent },
+
+  { path: '**', component: NotFoundComponent, pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

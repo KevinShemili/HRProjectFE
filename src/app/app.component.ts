@@ -1,12 +1,13 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Edukimm1Service } from './edukimm1/edukimm1.service';
+import { TokenDTO } from './_models/TokenDTO';
+import { AccountService } from './_services/account.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
+<<<<<<< HEAD
 export class AppComponent  {
 
 
@@ -19,3 +20,19 @@ export class AppComponent  {
 
 
 
+=======
+export class AppComponent implements OnInit {
+  title = 'HRProjectFE';
+
+  constructor(private accountService: AccountService) {}
+
+  ngOnInit() {
+    this.setCurrentUser();
+  }
+
+  setCurrentUser() {
+    const user: TokenDTO = JSON.parse(localStorage.getItem('token'));
+    this.accountService.setCurrentUser(user);
+  }
+}
+>>>>>>> master

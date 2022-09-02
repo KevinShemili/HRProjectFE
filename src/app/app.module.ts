@@ -4,8 +4,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavbarComponent } from './_components/navbar/navbar.component';
+import { LoginformComponent } from './_components/loginform/loginform.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { HomepageComponent } from './_components/homepage/homepage.component';
+import { RegisterformComponent } from './_components/registerform/registerform.component';
+import { ChangePasswordComponent } from './_components/change-password/change-password.component';
+import { ToastrModule } from 'ngx-toastr';
+import { NotFoundComponent } from './_components/not-found/not-found.component';
 
-import { ToppNavComponent } from './Layout/topp-nav/topp-nav.component';
+import { ToppNavComponent } from './Layout/app-navbar/topp-nav.component';
 import { Edukimm1Component } from './edukimm1/edukimm1.component';
 import { HttpClientModule } from '@angular/common/http';
 import { Edukimm1Service } from './edukimm1/edukimm1.service';
@@ -57,16 +67,18 @@ import { MatTableModule } from '@angular/material/table';
 @NgModule({
   declarations: [
     AppComponent,
-    ToppNavComponent,
-    Edukimm1Component,
-
-
-
+    NavbarComponent,
+    LoginformComponent,
+    HomepageComponent,
+    RegisterformComponent,
+    ChangePasswordComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+<<<<<<< HEAD
     HttpClientModule,
     MatAutocompleteModule,
     MatCheckboxModule,
@@ -111,5 +123,16 @@ import { MatTableModule } from '@angular/material/table';
     AppComponent,
     Edukimm1Component
   ]
+=======
+    FormsModule,
+    HttpClientModule,
+    BsDropdownModule.forRoot(),
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right',
+    }),
+  ],
+  providers: [],
+  bootstrap: [AppComponent],
+>>>>>>> master
 })
-export class AppModule { }
+export class AppModule {}
