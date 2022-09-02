@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './_components/navbar/navbar.component';
 import { LoginformComponent } from './_components/loginform/loginform.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { HomepageComponent } from './_components/homepage/homepage.component';
 import { RegisterformComponent } from './_components/registerform/registerform.component';
@@ -78,7 +78,6 @@ import { MatTableModule } from '@angular/material/table';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-<<<<<<< HEAD
     HttpClientModule,
     MatAutocompleteModule,
     MatCheckboxModule,
@@ -115,24 +114,19 @@ import { MatTableModule } from '@angular/material/table';
     MatTooltipModule,
     MatPaginatorModule,
     MatSortModule,
-    MatTableModule
-
-  ],
-  providers: [Edukimm1Service],
-  bootstrap: [
-    AppComponent,
-    Edukimm1Component
-  ]
-=======
+    MatTableModule,
     FormsModule,
-    HttpClientModule,
     BsDropdownModule.forRoot(),
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
     }),
+
   ],
   providers: [],
-  bootstrap: [AppComponent],
->>>>>>> master
+  bootstrap: [
+    AppComponent,
+    Edukimm1Component],
 })
+
 export class AppModule {}
+
