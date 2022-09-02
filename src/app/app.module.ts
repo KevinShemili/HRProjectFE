@@ -8,8 +8,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToppNavComponent } from './Layout/topp-nav/topp-nav.component';
 import { Edukimm1Component } from './edukimm1/edukimm1.component';
 import { HttpClientModule } from '@angular/common/http';
-// Add below imports to the Imports Section on the top of the page
+import { Edukimm1Service } from './edukimm1/edukimm1.service';
+import { UrlSegment } from '@angular/router';
 
+//
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -51,15 +53,13 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { Edukimm1Service } from './edukimm1/edukimm1.service';
-import { UrlSegment } from '@angular/router';
-
 
 @NgModule({
   declarations: [
     AppComponent,
     ToppNavComponent,
     Edukimm1Component,
+
 
 
   ],
@@ -103,8 +103,7 @@ import { UrlSegment } from '@angular/router';
     MatTooltipModule,
     MatPaginatorModule,
     MatSortModule,
-    MatTableModule,
-
+    MatTableModule
 
   ],
   providers: [Edukimm1Service],
