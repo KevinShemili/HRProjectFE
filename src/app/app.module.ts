@@ -9,9 +9,22 @@ import { LoginformComponent } from './_components/loginform/loginform.component'
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { HomepageComponent } from './_components/homepage/homepage.component';
+import { RegisterformComponent } from './_components/registerform/registerform.component';
+import { ChangePasswordComponent } from './_components/change-password/change-password.component';
+import { ToastrModule } from 'ngx-toastr';
+import { NotFoundComponent } from './_components/not-found/not-found.component';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, LoginformComponent],
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+    LoginformComponent,
+    HomepageComponent,
+    RegisterformComponent,
+    ChangePasswordComponent,
+    NotFoundComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -19,6 +32,9 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     FormsModule,
     HttpClientModule,
     BsDropdownModule.forRoot(),
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right',
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -4,24 +4,25 @@ import { ToastrService } from 'ngx-toastr';
 import { AccountService } from 'src/app/_services/account.service';
 
 @Component({
-  selector: 'app-loginform',
-  templateUrl: './loginform.component.html',
-  styleUrls: ['./loginform.component.css'],
+  selector: 'app-change-password',
+  templateUrl: './change-password.component.html',
+  styleUrls: ['./change-password.component.css'],
 })
-export class LoginformComponent implements OnInit {
+export class ChangePasswordComponent implements OnInit {
   model: any = {};
 
   constructor(
-    public accountService: AccountService,
-    private router: Router,
-    private toastr: ToastrService
+    private accountService: AccountService,
+    private toastr: ToastrService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {}
 
-  login() {
-    this.accountService.login(this.model).subscribe({
+  changePassword() {
+    this.accountService.changePassword(this.model).subscribe({
       next: () => {
+        this.toastr.success('Successfully changed password!');
         this.router.navigateByUrl('/home');
       },
       error: (e) => {
@@ -32,5 +33,9 @@ export class LoginformComponent implements OnInit {
         console.log();
       },
     });
+  }
+
+  cancel() {
+    this.router.navigateByUrl('/home');
   }
 }

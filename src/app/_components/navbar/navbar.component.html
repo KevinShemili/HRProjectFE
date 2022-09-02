@@ -1,14 +1,18 @@
 <nav class="navbar navbar-dark bg-dark" aria-label="First navbar example">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Human Resources Application</a>
-    <div class="dropdown" *ngIf="accountService.currentUser$ | async" dropdown>
-      <a class="dropdown-toggle text-light" dropdownToggle>Welcome, user</a>
-      <div class="dropdown-menu mt-2" *dropdownMenu>
-        <a class="dropdown-item">Edit Profile</a>
-        <a class="dropdown-item">Change Password</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" (click)="logout()">Log Out</a>
-      </div>
+    <a class="navbar-brand">Human Resources Application</a>
+    <div class="dropdown">
+      <ng-container *ngIf="(accountService.currentUser$ | async) as user" dropdown>
+        <a class="dropdown-toggle text-light" dropdownToggle>Welcome, {{user.username | titlecase}}</a>
+        <div class="dropdown-menu mt-2" *dropdownMenu>
+          <a class="dropdown-item">Edit Profile</a>
+          <a class="dropdown-item" routerLink='/change-password' routerLinkActive='active'>Change Password</a>
+          <a class="dropdown-item" routerLink='/register' routerLinkActive='active'>Create
+            User</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" (click)="logout()">Log Out</a>
+        </div>
+      </ng-container>
     </div>
   </div>
 </nav>
