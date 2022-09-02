@@ -10,6 +10,9 @@ import { AuthenticationGuard } from './_guards/authentication.guard';
 const routes: Routes = [
   {
     path: '',
+
+
+    //component:LoginformComponent,
     runGuardsAndResolvers: 'always',
     canActivate: [AuthenticationGuard],
     children: [
@@ -19,6 +22,7 @@ const routes: Routes = [
     ],
   },
   { path: 'login', component: LoginformComponent },
+
   { path: '**', component: NotFoundComponent, pathMatch: 'full' },
 ];
 
