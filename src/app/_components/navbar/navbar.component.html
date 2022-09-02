@@ -1,6 +1,8 @@
 <nav class="navbar navbar-dark bg-dark" aria-label="First navbar example">
   <div class="container-fluid">
     <a class="navbar-brand">Human Resources Application</a>
+    <a class="navbar-brand">My Profile</a>
+
     <div class="dropdown">
       <ng-container *ngIf="(accountService.currentUser$ | async) as user" dropdown>
         <a class="dropdown-toggle text-light" dropdownToggle>Welcome, {{user.username | titlecase}}</a>

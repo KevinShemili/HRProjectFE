@@ -7,20 +7,7 @@ import { AccountService } from './_services/account.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-<<<<<<< HEAD
-export class AppComponent  {
 
-
-
-
- }
-
-
-
-
-
-
-=======
 export class AppComponent implements OnInit {
   title = 'HRProjectFE';
 
@@ -35,4 +22,4 @@ export class AppComponent implements OnInit {
     this.accountService.setCurrentUser(user);
   }
 }
->>>>>>> master
+

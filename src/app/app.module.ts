@@ -15,10 +15,10 @@ import { ChangePasswordComponent } from './_components/change-password/change-pa
 import { ToastrModule } from 'ngx-toastr';
 import { NotFoundComponent } from './_components/not-found/not-found.component';
 
-import { ToppNavComponent } from './Layout/app-navbar/topp-nav.component';
-import { Edukimm1Component } from './edukimm1/edukimm1.component';
+
+
 import { HttpClientModule } from '@angular/common/http';
-import { Edukimm1Service } from './edukimm1/edukimm1.service';
+
 import { UrlSegment } from '@angular/router';
 
 //
@@ -125,7 +125,7 @@ import { MatTableModule } from '@angular/material/table';
   providers: [],
   bootstrap: [
     AppComponent,
-    Edukimm1Component],
+    ],
 })
 
 export class AppModule {}
