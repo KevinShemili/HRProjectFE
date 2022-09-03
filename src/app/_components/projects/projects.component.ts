@@ -10,9 +10,12 @@ import { ProjectsService } from 'src/app/_services/projects.service';
 })
 export class ProjectsComponent implements OnInit {
 
-  public id: any;
-  public localStorageStuff: any;
-  person: any;
+  public id: any = null;
+  public localStorageStuff: any = null;
+  public showNew: boolean = false;
+  public showEdit: boolean = false;
+  public projectId: any = null;
+  person: any = null;
   model: any = {};
   allProjects: any = [];
 
@@ -56,7 +59,7 @@ export class ProjectsComponent implements OnInit {
   deleteProject(projectId: any) {
     this.ProjectsService.deleteProject(projectId).subscribe({
       next: () => {
-        this.toastr.success('Successful permission change!');
+        this.toastr.success('Successful permission deleted!');
         this.getAllProjects()
       },
       error: (e) => {
@@ -69,8 +72,8 @@ export class ProjectsComponent implements OnInit {
     });
   }
 
-  updateProject(projectId: any, model: any) {
-    this.ProjectsService.updateProject(projectId, model).subscribe({
+  updateProject() {
+    this.ProjectsService.updateProject(this.projectId, this.model).subscribe({
       next: () => {
         this.toastr.success('Successful project change!');
         this.getAllProjects()
@@ -83,6 +86,35 @@ export class ProjectsComponent implements OnInit {
         console.log();
       },
     });
+  }
+
+  addProject() {
+    this.ProjectsService.addProject(this.model).subscribe({
+      next: () => {
+        this.toastr.success('Successful project created!');
+        this.getAllProjects()
+      },
+      error: (e) => {
+        console.error(e);
+        this.toastr.error(e.error);
+      },
+      complete: () => {
+        console.log();
+      },
+    });
+  }
+
+  onEditForm(projectId: any) {
+    this.projectId = projectId;
+    this.showNew = false;
+    this.showEdit = true;
+    this.model = {};
+  }
+
+  onNewForm() {
+    this.showEdit = false;
+    this.showNew = true;
+    this.model = {}
   }
 
 }

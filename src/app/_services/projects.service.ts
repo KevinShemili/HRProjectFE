@@ -20,4 +20,8 @@ export class ProjectsService {
     return this.http.put(`https://localhost:7006/Projekt/Put/${projectId}`, model);
   }
 
+  addProject(model: any) {
+    return this.http.post(`https://localhost:7006/Projekt`, model);
+  }
+
 }
