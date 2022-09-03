@@ -1,26 +1,28 @@
-<form class="permissionForm" #permissionForm="ngForm" (ngSubmit)="askPermission()" autocomplete="off">
-    <div class="form-ask">
-        <h2 class="text-center text-primary">Permissions</h2>
-        <h2>Ask permission</h2>
-        <div class="form-group">
-            <label>Date start: </label>
-            <input type="date" class="form-control" name="dataStart" [(ngModel)]="model.DataFillim">
-        </div>
-        <div class="form-group">
-            <label>Date end: </label>
-            <input type="date" class="form-control" name="dataEnd" [(ngModel)]="model.DataMbarim">
-        </div>
-        <div class="form-group">
-            <label>Permission type: </label>
-            <input type="text" class="form-control" name="permissionType" [(ngModel)]="model.TipiLeje">
-        </div>
-        <div class="form-check">
-            <div class="text-center button-check-group">
-                <button class="btn btn-success mr-2" type="submit">Ask permission</button>
-                <button class="btn btn-success mr-2" (click)="cancel()" type="submit">Cancel</button>
+<div class="wrapper-fillim">
+    <form class="permissionForm" #permissionForm="ngForm" (ngSubmit)="askPermission()" autocomplete="off">
+        <div class="form-ask">
+            <h2 class="text-center text-primary">Permissions</h2>
+            <h2>Ask permission</h2>
+            <div class="form-group">
+                <label>Date start: </label>
+                <input type="date" class="form-control" name="dataStart" [(ngModel)]="model.DataFillim">
+            </div>
+            <div class="form-group">
+                <label>Date end: </label>
+                <input type="date" class="form-control" name="dataEnd" [(ngModel)]="model.DataMbarim">
+            </div>
+            <div class="form-group">
+                <label>Permission type: </label>
+                <input type="text" class="form-control" name="permissionType" [(ngModel)]="model.TipiLeje">
+            </div>
+            <div class="form-check">
+                <div class="text-center button-check-group">
+                    <button class="btn btn-success mr-2" type="submit">Ask permission</button>
+                    <button class="btn btn-success mr-2" (click)="cancel()" type="submit">Cancel</button>
+                </div>
             </div>
         </div>
-    </div>
+    </form>
     <div class="form-approve">
         <span>Total permissions amount: {{person?.balancaLeje}}</span>
         <section>
@@ -49,11 +51,11 @@
                         <td>{{permission.user.userName}}</td>
                         <td>pending</td>
                         <td className="special-td">
-                            <button (click)="approveLeje(permission.id)">
+                            <button (click)="approveLeje(permission.lejeId)">
                                 Approve
                             </button>
 
-                            <button (click)="disapproveLeje(permission.id)">
+                            <button (click)="disapproveLeje(permission.lejeId)">
                                 Disapprove
                             </button>
                         </td>
@@ -62,4 +64,4 @@
             </table>
         </section>
     </div>
-</form>
+</div>
