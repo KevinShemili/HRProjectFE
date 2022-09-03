@@ -1,0 +1,35 @@
+<div class="wrapper-fillim">
+    <div class="form-approve" *ngIf="checkRolesToShowTable()">
+        <section>
+            <header className="header">
+                <h2>All Projects</h2>
+            </header>
+
+            <table className="table-data">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody *ngFor="let project of allProjects">
+                    <tr className="post-item">
+                        <td>{{project.emriProjekt}}</td>
+                        <td>{{project.pershkrimProjekt}}</td>
+                        <td className="special-td">
+                            <button (click)="updateProject(project.projektId, project)">
+                                Edit
+                            </button>
+
+                            <button (click)="deleteProject(project.projektId)">
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+</div>

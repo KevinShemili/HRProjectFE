@@ -15,6 +15,7 @@ import { ChangePasswordComponent } from './_components/change-password/change-pa
 import { ToastrModule } from 'ngx-toastr';
 import { NotFoundComponent } from './_components/not-found/not-found.component';
 import { PermissionsComponent } from './_components/permissions/permissions.component';
+import { ProjectsComponent } from './_components/projects/projects.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { PermissionsComponent } from './_components/permissions/permissions.comp
     ChangePasswordComponent,
     NotFoundComponent,
     PermissionsComponent,
+    ProjectsComponent,
   ],
   imports: [
     BrowserModule,
