@@ -1,6 +1,6 @@
 <div class="wrapper-fillim">
     <form class="permissionForm" #permissionForm="ngForm" (ngSubmit)="askPermission()" autocomplete="off">
-        <div class="form-ask">
+        <div class="form-ask" *ngIf="checkRolesToShowForm()">
             <h2 class="text-center text-primary">Permissions</h2>
             <h2>Ask permission</h2>
             <div class="form-group">
@@ -22,9 +22,9 @@
                 </div>
             </div>
         </div>
-    </form>
-    <div class="form-approve">
         <span>Total permissions amount: {{person?.balancaLeje}}</span>
+    </form>
+    <div class="form-approve" *ngIf="checkRolesToShowTable()">
         <section>
             <header className="header">
                 <h2>Pending permissions</h2>

@@ -72,8 +72,9 @@ export class PermissionsComponent implements OnInit {
     this.PermissionsService.approvePermission(lejeId).subscribe({
       next: () => {
         this.toastr.success('Successful permission change!');
-        const copyArray = [...this.allPermissions]
-        const finalArray = copyArray.filter(item => item.id !== lejeId)
+        this.getAllPermissions()
+        // const copyArray = [...this.allPermissions]
+        // const finalArray = copyArray.filter(item => item.id !== lejeId)
       },
       error: (e) => {
         console.error(e);
@@ -89,8 +90,9 @@ export class PermissionsComponent implements OnInit {
     this.PermissionsService.dissaprovePermission(lejeId).subscribe({
       next: () => {
         this.toastr.success('Successful permission change!');
-        const copyArray = [...this.allPermissions]
-        const finalArray = copyArray.filter(item => item.id !== lejeId)
+        this.getAllPermissions()
+        // const copyArray = [...this.allPermissions]
+        // const finalArray = copyArray.filter(item => item.id !== lejeId)
       },
       error: (e) => {
         console.error(e);
@@ -102,6 +104,29 @@ export class PermissionsComponent implements OnInit {
     });
   }
 
+  checkRolesToShowTable() {
+    let show = false;
+
+    for (const role of this.person?.userRolis) {
+      if (role.roli.roliEmri === "HR Manager") {
+        show = true;
+        break;
+      }
+    }
+    return show
+  }
+
+  checkRolesToShowForm() {
+    let show = true;
+
+    for (const role of this.person?.userRolis) {
+      if (role.roli.roliEmri === "HR Manager") {
+        show = false;
+      }
+    }
+
+    return show
+  }
 
   cancel() {
     console.log("Cancel")
