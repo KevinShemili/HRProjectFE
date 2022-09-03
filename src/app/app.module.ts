@@ -14,6 +14,8 @@ import { RegisterformComponent } from './_components/registerform/registerform.c
 import { ChangePasswordComponent } from './_components/change-password/change-password.component';
 import { ToastrModule } from 'ngx-toastr';
 import { NotFoundComponent } from './_components/not-found/not-found.component';
+import { PermissionsComponent } from './_components/permissions/permissions.component';
+import { ProjectsComponent } from './_components/projects/projects.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { NotFoundComponent } from './_components/not-found/not-found.component';
     RegisterformComponent,
     ChangePasswordComponent,
     NotFoundComponent,
+    PermissionsComponent,
+    ProjectsComponent,
   ],
   imports: [
     BrowserModule,
