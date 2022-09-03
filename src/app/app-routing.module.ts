@@ -6,6 +6,7 @@ import { LoginformComponent } from './_components/loginform/loginform.component'
 import { NotFoundComponent } from './_components/not-found/not-found.component';
 import { RegisterformComponent } from './_components/registerform/registerform.component';
 import { AuthenticationGuard } from './_guards/authentication.guard';
+import { PermissionsComponent } from './_components/permissions/permissions.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,7 @@ const routes: Routes = [
       { path: 'register', component: RegisterformComponent },
       { path: 'change-password', component: ChangePasswordComponent },
       { path: 'home', component: HomepageComponent },
+      { path: 'permissions', component: PermissionsComponent },
     ],
   },
   { path: 'login', component: LoginformComponent },
