@@ -91,7 +91,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-<<<<<<< HEAD
+
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -99,23 +99,18 @@
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
-            ],
-=======
-            "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.css"],
->>>>>>> master
-            "scripts": []
+            ]
           }
+
         }
       }
     }
   },
-<<<<<<< HEAD
+
   "defaultProject": "HRProjectFE",
   "cli": {
     "analytics": "72c53e45-c91c-4f18-b91f-3b6f3f1fd042"
   }
-=======
-  "defaultProject": "HRProjectFE"
->>>>>>> master
 }
+
+

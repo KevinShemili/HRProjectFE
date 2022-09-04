@@ -1,7 +1,7 @@
 <nav class="navbar navbar-dark bg-dark" aria-label="First navbar example">
   <div class="container-fluid">
     <a class="navbar-brand">Human Resources Application</a>
-    <a class="navbar-brand">My Profile</a>
+     <a routerLink="Edukimi" mat-raised-button>Edukimi</a>
 
     <div class="dropdown">
       <ng-container *ngIf="(accountService.currentUser$ | async) as user" dropdown>
