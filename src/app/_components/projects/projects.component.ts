@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 import { AccountService } from 'src/app/_services/account.service';
 import { ProjectsService } from 'src/app/_services/projects.service';
 
@@ -18,6 +19,8 @@ export class ProjectsComponent implements OnInit {
   person: any = null;
   model: any = {};
   allProjects: any = [];
+  getAllProjectsSub: Subscription;
+  getUserDetailSub: Subscription;
 
   constructor(
     private ProjectsService: ProjectsService,
@@ -28,21 +31,30 @@ export class ProjectsComponent implements OnInit {
   ngOnInit(): void {
     this.localStorageStuff = JSON.parse(localStorage.getItem('token'))
     this.id = this.localStorageStuff.userId
-    this.getUserDetail(this.id);
-    this.getAllProjects()
-  }
-
-  getUserDetail(id: any) {
-    this.acountService.getUserInfo(id).subscribe((result: any) => {
+    this.getUserDetailSub = this.acountService.getUserInfo(this.id).subscribe((result: any) => {
       this.person = result;
     });
-  }
-
-  getAllProjects() {
-    this.ProjectsService.getAllProjects().subscribe((result: any) => {
+    this.getAllProjectsSub = this.ProjectsService.getAllProjects().subscribe((result: any) => {
       this.allProjects = result;
     });
   }
+
+  ngOnDestroy(): void {
+    this.getAllProjectsSub.unsubscribe();
+    this.getUserDetailSub.unsubscribe();
+  }
+
+  // getUserDetail(id: any) {
+  //   this.acountService.getUserInfo(id).subscribe((result: any) => {
+  //     this.person = result;
+  //   });
+  // }
+
+  // getAllProjects() {
+  //   this.ProjectsService.getAllProjects().subscribe((result: any) => {
+  //     this.allProjects = result;
+  //   });
+  // }
 
   checkRolesToShowTable() {
     let show = false;
@@ -59,8 +71,11 @@ export class ProjectsComponent implements OnInit {
   deleteProject(projectId: any) {
     this.ProjectsService.deleteProject(projectId).subscribe({
       next: () => {
-        this.toastr.success('Successful permission deleted!');
-        this.getAllProjects()
+        this.toastr.success('Successful project deleted!');
+        this.getAllProjectsSub = this.ProjectsService.getAllProjects().subscribe((result: any) => {
+          this.allProjects = result;
+        });
+        // this.getAllProjects()
       },
       error: (e) => {
         console.error(e);
@@ -76,7 +91,10 @@ export class ProjectsComponent implements OnInit {
     this.ProjectsService.updateProject(this.projectId, this.model).subscribe({
       next: () => {
         this.toastr.success('Successful project change!');
-        this.getAllProjects()
+        this.getAllProjectsSub = this.ProjectsService.getAllProjects().subscribe((result: any) => {
+          this.allProjects = result;
+        });
+        // this.getAllProjects()
       },
       error: (e) => {
         console.error(e);
@@ -92,7 +110,10 @@ export class ProjectsComponent implements OnInit {
     this.ProjectsService.addProject(this.model).subscribe({
       next: () => {
         this.toastr.success('Successful project created!');
-        this.getAllProjects()
+        this.getAllProjectsSub = this.ProjectsService.getAllProjects().subscribe((result: any) => {
+          this.allProjects = result;
+        });
+        // this.getAllProjects()
       },
       error: (e) => {
         console.error(e);
