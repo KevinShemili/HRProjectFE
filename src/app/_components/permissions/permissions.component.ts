@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Subscription } from 'rxjs';
 import { AccountService } from 'src/app/_services/account.service';
 import { PermissionsService } from 'src/app/_services/permissions.service';
 
@@ -22,8 +20,6 @@ export class PermissionsComponent implements OnInit {
   dateStart: string;
   dateEnd: string;
   permissionType: string;
-  getUserDetailSub: Subscription
-  getAllPermissionsSub: Subscription
 
   constructor(
     private PermissionsService: PermissionsService,
@@ -34,36 +30,16 @@ export class PermissionsComponent implements OnInit {
   ngOnInit(): void {
     this.localStorageStuff = JSON.parse(localStorage.getItem('token'))
     this.id = this.localStorageStuff.userId
-    this.getUserDetailSub = this.acountService.getUserInfo(this.id).subscribe((result: any) => {
+    this.acountService.getUserInfo(this.id).subscribe((result: any) => {
       this.person = result;
     });
-    // this.getUserDetail(this.id);
-    // this.getAllPermissions()
-    this.getAllPermissionsSub = this.PermissionsService.getAllPermissions().subscribe((result: any) => {
+    this.PermissionsService.getAllPermissions().subscribe((result: any) => {
       this.allPermissions = result;
     });
     setTimeout(()=> {
       this.toShowForm = this.checkRolesToShowForm()
-    }, 300)
-    // this.toShowForm = this.checkRolesToShowForm()
+    }, 500)
   }
-
-  ngOnDestroy(): void {
-    this.getAllPermissionsSub.unsubscribe();
-    this.getUserDetailSub.unsubscribe();
-  }
-
-  // getUserDetail(id: any) {
-  //   this.acountService.getUserInfo(id).subscribe((result: any) => {
-  //     this.person = result;
-  //   });
-  // }
-
-  // getAllPermissions() {
-  //   this.PermissionsService.getAllPermissions().subscribe((result: any) => {
-  //     this.allPermissions = result;
-  //   });
-  // }
 
   askPermission() {
     this.PermissionsService.askPermission(this.model, this.id).subscribe({
@@ -84,10 +60,9 @@ export class PermissionsComponent implements OnInit {
     this.PermissionsService.approvePermission(lejeId).subscribe({
       next: () => {
         this.toastr.success('Successful permission change!');
-        this.getAllPermissionsSub = this.PermissionsService.getAllPermissions().subscribe((result: any) => {
+        this.PermissionsService.getAllPermissions().subscribe((result: any) => {
           this.allPermissions = result;
         });
-        // this.getAllPermissions()
       },
       error: (e) => {
         console.error(e);
@@ -103,10 +78,9 @@ export class PermissionsComponent implements OnInit {
     this.PermissionsService.dissaprovePermission(lejeId).subscribe({
       next: () => {
         this.toastr.success('Successful permission change!');
-        this.getAllPermissionsSub = this.PermissionsService.getAllPermissions().subscribe((result: any) => {
+        this.PermissionsService.getAllPermissions().subscribe((result: any) => {
           this.allPermissions = result;
         });
-        // this.getAllPermissions()
       },
       error: (e) => {
         console.error(e);
