@@ -16,6 +16,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { NotFoundComponent } from './_components/not-found/not-found.component';
 import { PermissionsComponent } from './_components/permissions/permissions.component';
 import { ProjectsComponent } from './_components/projects/projects.component';
+import { PermissionsFormComponent } from './_components/permissions-form/permissions-form.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ProjectsComponent } from './_components/projects/projects.component';
     NotFoundComponent,
     PermissionsComponent,
     ProjectsComponent,
+    PermissionsFormComponent,
   ],
   imports: [
     BrowserModule,

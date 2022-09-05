@@ -1,5 +1,5 @@
 <div class="wrapper-fillim">
-    <form class="permissionForm" #permissionForm="ngForm" (ngSubmit)="askPermission()" autocomplete="off">
+    <!-- <form class="permissionForm" #permissionForm="ngForm" (ngSubmit)="askPermission()" autocomplete="off">
         <div class="form-ask" *ngIf="checkRolesToShowForm()">
             <h2 class="text-center text-primary">Permissions</h2>
             <h2>Ask permission</h2>
@@ -23,7 +23,16 @@
             </div>
         </div>
         <span>Total amount of days left: {{getBalancaLeje()}}</span>
-    </form>
+    </form> -->
+    <app-permissions-form 
+        (askPermission)="askPermission()" 
+        (checkRolesToShowForm)="checkRolesToShowForm()"
+        (getBalancaLeje)="getBalancaLeje()" 
+        (cancel)="cancel()" 
+        [model]="model"
+        [person]="person"
+        [toShowForm]="toShowForm">
+    </app-permissions-form>
     <div class="form-approve" *ngIf="checkRolesToShowTable()">
         <section>
             <header className="header">

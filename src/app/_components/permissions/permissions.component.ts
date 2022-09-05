@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 import { AccountService } from 'src/app/_services/account.service';
 import { PermissionsService } from 'src/app/_services/permissions.service';
 
@@ -13,12 +14,16 @@ export class PermissionsComponent implements OnInit {
 
   public id: any;
   public localStorageStuff: any;
-  person: any;
+  toShowTable = false
+  toShowForm = false
+  person: any = {};
   allPermissions: any = [];
   model: any = {};
   dateStart: string;
   dateEnd: string;
   permissionType: string;
+  getUserDetailSub: Subscription
+  getAllPermissionsSub: Subscription
 
   constructor(
     private PermissionsService: PermissionsService,
@@ -29,21 +34,36 @@ export class PermissionsComponent implements OnInit {
   ngOnInit(): void {
     this.localStorageStuff = JSON.parse(localStorage.getItem('token'))
     this.id = this.localStorageStuff.userId
-    this.getUserDetail(this.id);
-    this.getAllPermissions()
-  }
-
-  getUserDetail(id: any) {
-    this.acountService.getUserInfo(id).subscribe((result: any) => {
+    this.getUserDetailSub = this.acountService.getUserInfo(this.id).subscribe((result: any) => {
       this.person = result;
     });
-  }
-
-  getAllPermissions() {
-    this.PermissionsService.getAllPermissions().subscribe((result: any) => {
+    // this.getUserDetail(this.id);
+    // this.getAllPermissions()
+    this.getAllPermissionsSub = this.PermissionsService.getAllPermissions().subscribe((result: any) => {
       this.allPermissions = result;
     });
+    setTimeout(()=> {
+      this.toShowForm = this.checkRolesToShowForm()
+    }, 300)
+    // this.toShowForm = this.checkRolesToShowForm()
   }
+
+  ngOnDestroy(): void {
+    this.getAllPermissionsSub.unsubscribe();
+    this.getUserDetailSub.unsubscribe();
+  }
+
+  // getUserDetail(id: any) {
+  //   this.acountService.getUserInfo(id).subscribe((result: any) => {
+  //     this.person = result;
+  //   });
+  // }
+
+  // getAllPermissions() {
+  //   this.PermissionsService.getAllPermissions().subscribe((result: any) => {
+  //     this.allPermissions = result;
+  //   });
+  // }
 
   askPermission() {
     this.PermissionsService.askPermission(this.model, this.id).subscribe({
@@ -64,7 +84,10 @@ export class PermissionsComponent implements OnInit {
     this.PermissionsService.approvePermission(lejeId).subscribe({
       next: () => {
         this.toastr.success('Successful permission change!');
-        this.getAllPermissions()
+        this.getAllPermissionsSub = this.PermissionsService.getAllPermissions().subscribe((result: any) => {
+          this.allPermissions = result;
+        });
+        // this.getAllPermissions()
       },
       error: (e) => {
         console.error(e);
@@ -80,7 +103,10 @@ export class PermissionsComponent implements OnInit {
     this.PermissionsService.dissaprovePermission(lejeId).subscribe({
       next: () => {
         this.toastr.success('Successful permission change!');
-        this.getAllPermissions()
+        this.getAllPermissionsSub = this.PermissionsService.getAllPermissions().subscribe((result: any) => {
+          this.allPermissions = result;
+        });
+        // this.getAllPermissions()
       },
       error: (e) => {
         console.error(e);
@@ -95,9 +121,9 @@ export class PermissionsComponent implements OnInit {
   checkRolesToShowTable() {
     let show = false;
 
-    if (this.person !== undefined && this.person !== null) {
-      for (const role of this.person.userRolis) {
-        if (role.roli.roliEmri === "HR Manager") {
+    if (this.person !== undefined && this.person !== null && this.person.userRolis !== undefined) {
+      for (const role of this.person!.userRolis!) {
+        if (role.roli!.roliEmri! === "HR Manager") {
           show = true;
           break;
         }
@@ -109,9 +135,9 @@ export class PermissionsComponent implements OnInit {
   checkRolesToShowForm() {
     let show = true;
 
-    if (this.person !== undefined && this.person !== null) {
-      for (const role of this.person?.userRolis) {
-        if (role.roli.roliEmri === "HR Manager") {
+    if (this.person !== undefined && this.person !== null && this.person.userRolis !== undefined) {
+      for (const role of this.person!.userRolis!) {
+        if (role.roli!.roliEmri! === "HR Manager") {
           show = false;
         }
       }
@@ -120,7 +146,7 @@ export class PermissionsComponent implements OnInit {
   }
 
   getBalancaLeje() {
-    if (this.person !== undefined && this.person !== null) return this.person.balancaLeje;
+    if (this.person !== undefined && this.person !== null && this.person.balancaLeje !== undefined) return this.person.balancaLeje;
   }
 
   cancel() {
