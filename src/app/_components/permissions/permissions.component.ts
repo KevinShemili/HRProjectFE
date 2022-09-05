@@ -36,7 +36,10 @@ export class PermissionsComponent implements OnInit {
     this.PermissionsService.getAllPermissions().subscribe((result: any) => {
       this.allPermissions = result;
     });
-    setTimeout(()=> {
+  }
+
+  ngAfterViewChecked() {
+    setTimeout(() => {
       this.toShowForm = this.checkRolesToShowForm()
     }, 500)
   }
