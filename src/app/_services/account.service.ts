@@ -10,6 +10,8 @@ export class AccountService {
   apiUrl = 'https://localhost:7006/api/';
   private currentUserSource = new ReplaySubject<TokenDTO>(1);
   currentUser$ = this.currentUserSource.asObservable();
+  loggedIn: boolean = false;
+  user: TokenDTO;
 
   constructor(private http: HttpClient) {}
 
@@ -18,6 +20,8 @@ export class AccountService {
       map((response: TokenDTO) => {
         const token = response;
         if (token) localStorage.setItem('token', JSON.stringify(token));
+        this.loggedIn = true;
+        this.user = response;
         this.currentUserSource.next(token);
       })
     );
