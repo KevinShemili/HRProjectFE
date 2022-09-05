@@ -30,7 +30,7 @@ export class PermissionsComponent implements OnInit {
     this.localStorageStuff = JSON.parse(localStorage.getItem('token'))
     this.id = this.localStorageStuff.userId
     this.getUserDetail(this.id);
-    if (this.checkRolesToShowTable() === true) this.getAllPermissions()
+    this.getAllPermissions()
   }
 
   getUserDetail(id: any) {
