@@ -15,7 +15,6 @@ export class PermissionsComponent implements OnInit {
   public localStorageStuff: any;
   person: any;
   allPermissions: any = [];
-  // allPermissionsFiltered: any = []
   model: any = {};
   dateStart: string;
   dateEnd: string;
@@ -31,8 +30,8 @@ export class PermissionsComponent implements OnInit {
     this.localStorageStuff = JSON.parse(localStorage.getItem('token'))
     this.id = this.localStorageStuff.userId
     this.getUserDetail(this.id);
-    this.getAllPermissions()
-    // this.getAllPermissionsFiltered()
+    if (this.checkRolesToShowTable() === true) 
+      this.getAllPermissions()
   }
 
   getUserDetail(id: any) {
@@ -40,12 +39,6 @@ export class PermissionsComponent implements OnInit {
       this.person = result;
     });
   }
-
-  // getAllPermissionsFiltered() {
-  //   const copyArray = [...this.allPermissions]
-  //   const finalArray = copyArray.filter(item => item.aprovuar === 2)
-  //   return finalArray
-  // }
 
   getAllPermissions() {
     this.PermissionsService.getAllPermissions().subscribe((result: any) => {
@@ -73,8 +66,6 @@ export class PermissionsComponent implements OnInit {
       next: () => {
         this.toastr.success('Successful permission change!');
         this.getAllPermissions()
-        // const copyArray = [...this.allPermissions]
-        // const finalArray = copyArray.filter(item => item.id !== lejeId)
       },
       error: (e) => {
         console.error(e);
@@ -91,8 +82,6 @@ export class PermissionsComponent implements OnInit {
       next: () => {
         this.toastr.success('Successful permission change!');
         this.getAllPermissions()
-        // const copyArray = [...this.allPermissions]
-        // const finalArray = copyArray.filter(item => item.id !== lejeId)
       },
       error: (e) => {
         console.error(e);
