@@ -30,8 +30,7 @@ export class PermissionsComponent implements OnInit {
     this.localStorageStuff = JSON.parse(localStorage.getItem('token'))
     this.id = this.localStorageStuff.userId
     this.getUserDetail(this.id);
-    if (this.checkRolesToShowTable() === true) 
-      this.getAllPermissions()
+    if (this.checkRolesToShowTable() === true) this.getAllPermissions()
   }
 
   getUserDetail(id: any) {
@@ -96,25 +95,32 @@ export class PermissionsComponent implements OnInit {
   checkRolesToShowTable() {
     let show = false;
 
-    for (const role of this.person?.userRolis) {
-      if (role.roli.roliEmri === "HR Manager") {
-        show = true;
-        break;
+    if (this.person !== undefined && this.person !== null) {
+      for (const role of this.person.userRolis) {
+        if (role.roli.roliEmri === "HR Manager") {
+          show = true;
+          break;
+        }
       }
+      return show
     }
-    return show
   }
 
   checkRolesToShowForm() {
     let show = true;
 
-    for (const role of this.person?.userRolis) {
-      if (role.roli.roliEmri === "HR Manager") {
-        show = false;
+    if (this.person !== undefined && this.person !== null) {
+      for (const role of this.person?.userRolis) {
+        if (role.roli.roliEmri === "HR Manager") {
+          show = false;
+        }
       }
     }
-
     return show
+  }
+
+  getBalancaLeje() {
+    if (this.person !== undefined && this.person !== null) return this.person.balancaLeje;
   }
 
   cancel() {

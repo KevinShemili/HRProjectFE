@@ -59,13 +59,15 @@ export class ProjectsComponent implements OnInit {
   checkRolesToShowTable() {
     let show = false;
 
-    for (const role of this.person?.userRolis) {
-      if (role.roli.roliEmri === "HR Manager") {
-        show = true;
-        break;
+    if (this.person !== undefined && this.person !== null) {
+      for (const role of this.person.userRolis) {
+        if (role.roli.roliEmri === "HR Manager") {
+          show = true;
+          break;
+        }
       }
+      return show
     }
-    return show
   }
 
   deleteProject(projectId: any) {
