@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { NavbarComponent } from '../navbar/navbar.component';
+
+
+
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AccountService } from 'src/app/_services/account.service';
 
 @Component({
   selector: 'app-homepage',
@@ -7,7 +11,9 @@ import { NavbarComponent } from '../navbar/navbar.component';
   styleUrls: ['./homepage.component.css'],
 })
 export class HomepageComponent implements OnInit {
-  constructor() {}
+  constructor(public accountServices: AccountService,private router: Router) {}
 
+ 
   ngOnInit(): void {}
+  
 }

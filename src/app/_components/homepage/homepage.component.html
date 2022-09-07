@@ -1,5 +1,35 @@
-<div class="containter mt-5">
-    <div>
-        <h1>Homepage container</h1>
-    </div>
-</div>
+
+<ul class="nav justify-content-center">
+<ul class="nav nav-pills">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page">HOME</a>
+      </li>
+      <li class="nav-item dropdown"  dropdown>
+
+        <ng-container *ngIf="(accountServices .currentUser$ | async) as user" dropdown></ng-container>
+
+        <a class="nav-link dropdown-toggle"dropdownToggle role="button" aria-expanded="false">MyProfile</a>
+
+
+        <ul class="dropdown-menu" *dropdownMenu>
+         <li> <a class="dropdown-item" routerLink="/personal" routerLinkActive="active">Personal</a></li>
+         <li><a class="dropdown-item" routerLink="/professional" routerLinkActive="active">Proffesional</a></li>   
+         </ul>     
+    
+    </li>
+    
+    <li class="nav-item">
+        <a class="nav-link" href="#">Company's Projects</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Calendar</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contact Us</a>
+      </li>
+            </ul>
+</ul>
+<body>
+<h1 >Welcome to 3i Solutions :)</h1>
+
+</body>

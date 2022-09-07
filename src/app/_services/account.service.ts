@@ -10,6 +10,9 @@ export class AccountService {
   apiUrl = 'https://localhost:7006/api/';
   private currentUserSource = new ReplaySubject<TokenDTO>(1);
   currentUser$ = this.currentUserSource.asObservable();
+  private currentUserInfo = new ReplaySubject<any>(1);
+  currentUserInfo$ = this.currentUserInfo.asObservable()
+
 
   constructor(private http: HttpClient) {}
 
@@ -40,5 +43,16 @@ export class AccountService {
 
   changePassword(model: any) {
     return this.http.patch(this.apiUrl + 'Account/changePassword', model);
+  
+  
   }
-}
+
+  getUserInfo(userId: string) {
+    return this.http.get(`https://localhost:7006/User/${userId}`)
+  }
+
+
+
+ } 
+
+

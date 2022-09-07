@@ -1,0 +1,70 @@
+
+<form #profileform="ngForm"  (ngSubmit)="addDetails()" autocomplete="off"    >
+    
+    
+        <h2>UserDetails</h2>
+
+      <div class="form-group">
+          <input type="file" class="form-control" name="ProfilePhoto" [(ngModel)]="model.ProfilePhoto" >
+      </div>
+
+      <div class="form-group">
+        <input type="file" class="form-control" name="IDCard" [(ngModel)]="model.IDCard" >
+    </div>
+    
+
+    <div class="form-group">
+      <input type="text" class="form-control" name="Address" [(ngModel)]="model.Address"
+          placeholder="Address">
+  </div>
+
+
+  <div class="form-group">
+    <input type="number" class="form-control" name="Number" [(ngModel)]="model.number"
+        placeholder="PhoneNumber">
+  </div>
+    
+    
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Describe Yourself</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" cols="30" rows="3" name="DescribeYourself" [(ngModel)]="model.DescribeYourself"></textarea>
+      </div>
+
+      <div class="form-group">
+        <input type="text" class="form-control" name="WorkGroup" [(ngModel)]="model.WorkGroup"
+            placeholder="WorkGroup">
+    </div>
+
+    <div class="form-group">
+      <input type="text" class="form-control" name="WorkGroupPosition" [(ngModel)]="model.WorkGroupPosition"
+          placeholder="WorkGroupPositionr">
+  </div>
+
+      
+  <div class="form-group">
+    <input type="date" class="form-control" name="StartDate" [(ngModel)]="model.StartDate"
+        placeholder="StartDate">
+</div>
+
+<div class="form-group">
+  <input type="date" class="form-control" name="LeavingDate" [(ngModel)]="model.LeavingDate"
+      placeholder="LeavingDate">
+</div>
+
+     
+<div class="form-group">
+  <label for="exampleFormControlTextarea1">Leaving Reasons</label>
+  <textarea class="form-control" id="exampleFormControlTextarea1" cols="30" rows="3" name="LeavingReasons" [(ngModel)]="model.LeavingReasons"></textarea>
+</div>
+
+
+      
+
+    <div class="form-group">
+
+    
+      <button class="btn btn-success mr-2" type="submit" >addDetails</button>
+ </div>
+
+
+</form>

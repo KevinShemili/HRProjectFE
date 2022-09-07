@@ -1,0 +1,16 @@
+body{
+    text-align: center;
+    display:flex;
+    height: 500px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: medium;
+    font-style: italic;
+    justify-content: center; 
+    align-items: center;
+}
+ .dropdown-toggle,
+.dropdown-item {
+    cursor: pointer;
+  }
+ 
+  

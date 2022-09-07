@@ -20,4 +20,6 @@ export class AppComponent implements OnInit {
     const user: TokenDTO = JSON.parse(localStorage.getItem('token'));
     this.accountService.setCurrentUser(user);
   }
+
+  
 }

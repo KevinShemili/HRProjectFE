@@ -6,6 +6,8 @@ import { LoginformComponent } from './_components/loginform/loginform.component'
 import { NotFoundComponent } from './_components/not-found/not-found.component';
 import { RegisterformComponent } from './_components/registerform/registerform.component';
 import { AuthenticationGuard } from './_guards/authentication.guard';
+import { PersonalComponent } from './_components/personal/personal.component';
+import { ProfessionalComponent } from './_components/professional/professional.component';
 
 const routes: Routes = [
   {
@@ -16,10 +18,14 @@ const routes: Routes = [
       { path: 'register', component: RegisterformComponent },
       { path: 'change-password', component: ChangePasswordComponent },
       { path: 'home', component: HomepageComponent },
+    { path: 'personal', component: PersonalComponent },
+    {path:'professional',component:ProfessionalComponent},
+      
     ],
   },
   { path: 'login', component: LoginformComponent },
   { path: '**', component: NotFoundComponent, pathMatch: 'full' },
+  
 ];
 
 @NgModule({
