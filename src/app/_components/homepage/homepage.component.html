@@ -1,0 +1,72 @@
+<div class="page-content page-container" id="page-content">
+    <div class="padding">
+        <div class="row container d-flex justify-content-center">
+<div class="col-xl-6 col-md-12">
+                                                <div class="card user-card-full">
+                                                    <div class="row m-l-0 m-r-0">
+                                                        <div class="col-sm-4 bg-c-lite-green user-profile">
+                                                            <div class="card-block text-center text-white">
+                                                                <div class="m-b-25">
+                                                                    <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image">
+                                                                </div>
+                                                                <h4 class="f-w-600">{{UserProfile.userFirstname}} {{UserProfile.userLastname}}</h4>
+                                                                <p>{{UserProfile.userEmail}}</p>
+                                                                <p>{{UserProfile.detajeUsers[0].pershkrimiVetes}}</p>
+                                                                <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-8">
+                                                            <div class="card-block">
+                                                                <h4 class="m-b-20 p-b-5 b-b-default f-w-600">Te Dhenat</h4>
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <p class="m-b-10 f-w-600">Balanca e lejes</p>
+                                                                        <h6 class="text-muted f-w-400">{{UserProfile.balancaLeje}}</h6>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <p class="m-b-10 f-w-600">Numri i telefonit</p>
+                                                                        <h6 class="text-muted f-w-400">{{UserProfile.detajeUsers[0].numerTelefoni}}</h6>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <p class="m-b-10 f-w-600">Adresa</p>
+                                                                        <h6 class="text-muted f-w-400">{{UserProfile.detajeUsers[0].adresa}}</h6>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <p class="m-b-10 f-w-600">Data e fillimit</p>
+                                                                        <h6 class="text-muted f-w-400">{{UserProfile.detajeUsers[0].dataFillim | date:'yyyy-MM-dd'}}</h6>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <p class="m-b-10 f-w-600">Grupi i punes</p>
+                                                                        <h6 class="text-muted f-w-400">{{UserProfile.detajeUsers[0].grupiPunes}}</h6>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <p class="m-b-10 f-w-600">Puna e caktuar</p>
+                                                                        <h6 class="text-muted f-w-400">{{UserProfile.detajeUsers[0].punaCaktuarNeGrup}}</h6>
+                                                                    </div>
+                                                                </div>
+                                                                <h4 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Eksperienca</h4>
+                                                                <div class="row">
+                                                                    <div >
+                                                                        <p class="m-b-10 f-w-600">{{UserProfile.userPervojePunes[0].pp.ppemri}}</p>
+                                                                        <h6 class="text-muted f-w-400">Data e fillimit: {{UserProfile.userPervojePunes[0].dataFillim | date:'yyyy-MM-dd'}}  </h6>
+                                                                        <h6 class="text-muted f-w-400">Data e mbarimit: {{UserProfile.userPervojePunes[0].dataMbarim | date:'yyyy-MM-dd'}} </h6>
+                                                                        <h6 class="text-muted f-w-400">Pozicioni: {{UserProfile.userPervojePunes[0].pppozicion}} </h6>
+                                                                        <h6 class="text-muted f-w-400">Pershkrimi i punes: {{UserProfile.userPervojePunes[0].pershkrimiPunes}} </h6>
+                                                                    </div>
+                                                                    <div>
+                                                                        <p class="m-b-10 f-w-600">{{UserProfile.userPervojePunes[1].pp.ppemri}}</p>
+                                                                        <h6 class="text-muted f-w-400">Data e fillimit: {{UserProfile.userPervojePunes[1].dataFillim | date:'yyyy-MM-dd'}}  </h6>
+                                                                        <h6 class="text-muted f-w-400">Data e mbarimit: {{UserProfile.userPervojePunes[1].dataMbarim | date:'yyyy-MM-dd'}} </h6>
+                                                                        <h6 class="text-muted f-w-400">Pozicioni: {{UserProfile.userPervojePunes[1].pppozicion}} </h6>
+                                                                        <h6 class="text-muted f-w-400">Pershkrimi i punes: {{UserProfile.userPervojePunes[1].pershkrimiPunes}} </h6>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             </div>
+                                                </div>
+                                            </div>
