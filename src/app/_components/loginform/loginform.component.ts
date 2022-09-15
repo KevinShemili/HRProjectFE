@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { LoginDTO } from 'src/app/_models/login-dto';
 import { AccountService } from 'src/app/_services/account.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { AccountService } from 'src/app/_services/account.service';
   styleUrls: ['./loginform.component.css'],
 })
 export class LoginformComponent implements OnInit {
-  model: any = {};
+  model = {} as LoginDTO;
 
   constructor(
     public accountService: AccountService,

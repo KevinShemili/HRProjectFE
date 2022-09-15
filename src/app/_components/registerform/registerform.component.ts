@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { RegisterDTO } from 'src/app/_models/register-dto';
 import { AccountService } from 'src/app/_services/account.service';
-import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-registerform',
@@ -10,12 +10,11 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   styleUrls: ['./registerform.component.css'],
 })
 export class RegisterformComponent implements OnInit {
-  model: any = {};
+  model = {} as RegisterDTO;
   isAdminCheck: boolean;
   isHRManagerCheck: boolean;
   isHRSpecialistCheck: boolean;
   isBoardMemberCheck: boolean;
-  jwtHelper = new JwtHelperService();
 
   constructor(
     private accountService: AccountService,

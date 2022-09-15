@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { PasswordChangeDTO } from 'src/app/_models/password-change-dto';
 import { AccountService } from 'src/app/_services/account.service';
-import { JwtHelperService } from '@auth0/angular-jwt';
+import { TokenDecodeService } from 'src/app/_services/token-decode.service';
 
 @Component({
   selector: 'app-change-password',
@@ -12,22 +12,18 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class ChangePasswordComponent implements OnInit {
   model = {} as PasswordChangeDTO;
-  jwtHelper = new JwtHelperService();
 
   constructor(
     private accountService: AccountService,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private tokenDecode: TokenDecodeService
   ) {}
 
   ngOnInit(): void {}
 
-  private decodeToken() {
-    return this.jwtHelper.decodeToken(localStorage.getItem('token'));
-  }
-
   changePassword() {
-    this.model.userId = this.decodeToken().nameid;
+    this.model.userId = this.tokenDecode.token.nameid;
 
     this.accountService.changePassword(this.model).subscribe({
       next: () => {
