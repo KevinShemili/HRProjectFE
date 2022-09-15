@@ -8,8 +8,7 @@ import { TokenDTO } from '../_models/TokenDTO';
 })
 export class AccountService {
   apiUrl = 'https://localhost:7006/api/';
-  private currentUserSource = new ReplaySubject<TokenDTO>(1);
-  currentUser$ = this.currentUserSource.asObservable();
+  currentUser: TokenDTO;
 
   constructor(private http: HttpClient) {}
 
@@ -18,7 +17,7 @@ export class AccountService {
       map((response: TokenDTO) => {
         const token = response;
         if (token) localStorage.setItem('token', JSON.stringify(token));
-        this.currentUserSource.next(token);
+        this.currentUser = token;
       })
     );
   }
@@ -28,12 +27,12 @@ export class AccountService {
   }
 
   setCurrentUser(user: TokenDTO) {
-    this.currentUserSource.next(user);
+    this.currentUser = user;
   }
 
   logout() {
     localStorage.removeItem('token');
-    this.currentUserSource.next(null);
+    this.currentUser = null;
   }
 
   changePassword(model: any) {

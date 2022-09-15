@@ -1,4 +1,14 @@
+.registerForm {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    text-align: center;
+    min-height: 140mm;
+}
+
 .form-group {
+    margin-right: auto;
+    min-width: 60mm;
     font-size: 20px;
     height: 100px;
     width: 300px;

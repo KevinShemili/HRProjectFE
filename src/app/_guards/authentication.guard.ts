@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { map, Observable } from 'rxjs';
 import { AccountService } from '../_services/account.service';
 
 @Injectable({
@@ -10,15 +9,13 @@ import { AccountService } from '../_services/account.service';
 export class AuthenticationGuard implements CanActivate {
   constructor(
     private accountService: AccountService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {}
 
-  canActivate(): Observable<boolean> {
-    return this.accountService.currentUser$.pipe(
-      map((user) => {
-        if (user) return true;
-        this.toastr.error('Not authorized!');
-      })
-    );
+  canActivate(): boolean {
+    if (this.accountService.currentUser) return true;
+    this.toastr.error('Not authorized!');
+    this.router.navigateByUrl('/login');
   }
 }
